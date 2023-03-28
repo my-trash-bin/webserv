@@ -1,0 +1,19 @@
+{
+  "$id": "webserv_config",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "miniRT",
+  "description": "config for webserv",
+  "$ref": "#/$defs/root",
+  "$defs": {
+    "root": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "server_name": {
+          "type": "string",
+          "description": "The name of the server"
+        }
+      }
+    }
+  }
+}
