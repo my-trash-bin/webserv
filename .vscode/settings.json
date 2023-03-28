@@ -17,6 +17,10 @@
       "url": "./schema.json",
     },
   ],
+  "[cpp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+  },
   "clangd.detectExtensionConflicts": false,
   "C_Cpp.autocomplete": "Disabled",
   "C_Cpp.intelliSenseEngine": "Disabled",
