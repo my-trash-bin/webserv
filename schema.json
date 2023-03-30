@@ -28,21 +28,9 @@
     "route": {
       "type": "object",
       "unevaluatedProperties": false,
-      "allOf": [
-        {
-          "properties": {
-            "routes": {
-              "type": "object",
-              "additionalProperties": { "$ref": "#/$defs/route" }
-            }
-          }
-        },
-        {
-          "oneOf": [
-            { "$ref": "#/$defs/file-route" },
-            { "$ref": "#/$defs/cgi-route" }
-          ]
-        }
+      "oneOf": [
+        { "$ref": "#/$defs/file-route" },
+        { "$ref": "#/$defs/cgi-route" }
       ]
     },
     "file-route": {
@@ -51,7 +39,11 @@
       "properties": {
         "type": { "type": "string", "enum": ["file"] },
         "path": { "type": "string" },
-        "directoryListing": { "type": "boolean" }
+        "directoryListing": { "type": "boolean" },
+        "routes": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/route" }
+        }
       },
       "required": ["type", "path"]
     },
@@ -60,7 +52,11 @@
       "unevaluatedProperties": false,
       "properties": {
         "type": { "type": "string", "enum": ["cgi"] },
-        "path": { "type": "string" }
+        "path": { "type": "string" },
+        "routes": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/route" }
+        }
       },
       "required": ["type", "path"]
     }
