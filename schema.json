@@ -38,7 +38,22 @@
       "unevaluatedProperties": false,
       "properties": {
         "type": { "type": "string", "enum": ["file"] },
-        "path": { "type": "string" },
+        "path": { "type": "string", "description": "http route path segment" },
+        "root": { "type": "string", "description": "path to file system root" },
+        "methods": {
+          "type": "object",
+          "unevaluatedProperties": false,
+          "properties": {
+            "GET": { "type": "boolean" },
+            "HEAD": { "type": "boolean" },
+            "OPTIONS": { "type": "boolean" },
+            "POST": { "type": "boolean" },
+            "PUT": { "type": "boolean" },
+            "PATCH": { "type": "boolean" },
+            "DELETE": { "type": "boolean" },
+            "TRACE": { "type": "boolean" }
+          }
+        },
         "directoryListing": { "type": "boolean" },
         "routes": {
           "type": "object",
@@ -53,12 +68,13 @@
       "properties": {
         "type": { "type": "string", "enum": ["cgi"] },
         "path": { "type": "string" },
+        "rule": { "type": "array", "items": { "type": "string" } },
         "routes": {
           "type": "object",
           "additionalProperties": { "$ref": "#/$defs/route" }
         }
       },
-      "required": ["type", "path"]
+      "required": ["type", "path", "rule"]
     }
   }
 }
